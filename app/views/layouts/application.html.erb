@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SupportRequest</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+  <div class="navbar-header">
+    <%= link_to "Home", root_path, class:"navbar-brand" %>
+    <%= link_to "All Requests", requests_path, class:"navbar-brand" %>
+    <%= link_to "New Request", new_request_path, class:"navbar-brand"%>
+  </div>
+  </div>
+  </nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div id="content" class="col-xs-12">
+       <%= yield %>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

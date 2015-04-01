@@ -1,0 +1,35 @@
+<% if @request.errors.any? %>
+  <ul>
+  <% @request.errors.full_messages.each do |message| %>
+    <%= message %>
+    <br>
+  <% end %>
+  <ul>
+<% end %>
+
+<%= form_for @request do |f| %>
+  <form role="form">
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class = "form-group"> 
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+  <div class = "form-group">
+    <%= f.label :department %>
+    Sales <%= f.radio_button :department, "Sales"%>
+    Marketing <%= f.radio_button :department, "Marketing" %>
+    Technical <%= f.radio_button :department, "Technical" %>
+  </div>
+  <div class = "form-group">
+    <%= f.label :message %>
+    <%= f.text_area :message%>
+  </div>
+  <%= f.submit %>
+  </form>
+<% end %>
+
+
+

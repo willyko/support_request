@@ -1,0 +1,36 @@
+<h1> Requests </h1>
+<table class="table">
+  <tr>
+    <th>Full Name</th>
+    <th>Email</th>
+    <th>Department</th>
+    <th>Message</th>
+    <th>Action</th>
+  </tr>
+
+<% @requests.each do | request | %>
+<tr class="active">
+  <td><%= request.name %></td>
+  <td><%= mail_to request.email%></td>
+  <td><%= request.department%></td>
+  <td><%= request.message%></td>
+  <td style="white-space:nowrap;">
+    <%= link_to "Edit", edit_request_path(request), method: :get, class:'btn btn-success'%>
+    <%= link_to "Delete", request_path(request), method: :delete, data: {confirm: "Are you sure?"}, class:'btn btn-default' %>
+    <% if request.done == true %>
+      <%= link_to "Done", request_path(request, request: {done: false}), method: :patch, class:'btn btn-primary'%>
+    <% else %>
+      <%= link_to "Not Done", request_path(request, request: {done: true}), method: :patch, class:'btn btn-primary'%>
+    <% end %>
+  </td>
+</tr>
+<%end%>
+
+
+</table>
+
+<form action="/requests" accept-charset="UTF-8" method="get">
+  <input name="utf8" type="hidden" value="✓">
+  <input type="text" name="search" id="search" class="textfield-search">
+  <input type="submit" value="Search" class="search-button">
+</form>
